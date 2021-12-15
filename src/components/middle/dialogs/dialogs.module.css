@@ -1,0 +1,24 @@
+.dialogs{
+    padding: 10px;
+
+}
+
+.messages {
+    padding: 10px;
+
+}
+
+.dialog.active {
+    color: deepskyblue;
+
+}
+
+
+.message {
+
+}
+
+.grandDialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}

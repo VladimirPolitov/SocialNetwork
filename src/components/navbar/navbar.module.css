@@ -1,0 +1,20 @@
+.nav {
+    background-color: darkorchid;
+    grid-area: n;
+    padding-left: 20px;
+}
+
+.item {
+    text-decoration: none;
+}
+
+.item:hover {
+    color: hotpink;
+}
+
+.item:focus {
+    color: hotpink;
+}
+
+
+
