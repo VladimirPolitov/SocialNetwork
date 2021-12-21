@@ -3,7 +3,25 @@ import {rerenderEntireTree} from "../render";
 let UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY';
 let SEND_MESSAGE = 'SEND_MESSAGE';
 
-let dialogsReducer = (state: any, action: any) => {
+let initialState = {
+    messages: [
+        {id: '1', message: "Hi"},
+        {id: '2', message: "Whats up?"},
+        {id: '3', message: "Go over here!!!"},
+        {id: '4', message: "Wake up, Neo"},
+        {id: '5', message: "Best work ever!"}
+    ],
+    dialogs: [
+        {id: '1', nick: 'Subzero'},
+        {id: '2', nick: 'Shang-Tsung'},
+        {id: '3', nick: 'Tanya'},
+        {id: '4', nick: 'Goro'},
+        {id: '5', nick: 'Scorpion'}
+    ],
+    newMessageBody: "",
+}
+
+let dialogsReducer = (state: any = initialState, action: any) => {
 
     if (action.type === 'UPDATE_NEW_MESSAGE_BODY') {
         state.newMessageBody = action.body;

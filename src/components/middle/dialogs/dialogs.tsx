@@ -7,19 +7,19 @@ import {sendMessageCreator, updateNewMessageBodyCreator} from "../../../redux/di
 
 function Dialogs(props: any) {
 
-    let state = props.store.getState().messagePage
+    let state = props.messagePage
     let dialogsElement = state.dialogs.map((d: { id: any; nick: any; }) => <Dialog id={d.id} nick={d.nick}/>);
     let messageElement = state.messages.map((m: { message: any; }) => <Message message={m.message}/>);
     let newMessageBody = state.newMessageBody;
 
     let onSendMessageClick = () => {
-        props.store.dispatch(sendMessageCreator())
+        props.sendMessage();
     };
 
 
     let onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let body = e.currentTarget.value;
-        props.store.dispatch(updateNewMessageBodyCreator(body))
+        props.updateNewMessageBody(body)
     };
 
     return (<div className={d.grandDialogs}>

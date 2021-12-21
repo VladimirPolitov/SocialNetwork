@@ -5,25 +5,20 @@ import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../red
 
 
 
-
-
-
 function Profile(props: any) {
 
-    let postsElement = props.myPostsData2.map((p: { message: string; likesCount: number; }) =>
+    let postsElement = props.posts.map((p: { message: string; likesCount: number; }) =>
         <Post message={p.message} likesCount={p.likesCount}/>)
 
     let newPostElement = React.createRef<HTMLTextAreaElement>();
 
-    let addPost = () => {
-        if (newPostElement.current) {
-            props.dispatch(addPostActionCreator());
-        }
+    let onAddPost = () => {
+        props.addPost();
     };
 
     let onPostChange = () => {
         let text = newPostElement.current?.value;
-        props.dispatch(updateNewPostTextActionCreator(text));
+        props.updateNewPostText(text)
     }
 
     return <div>
@@ -32,7 +27,7 @@ function Profile(props: any) {
 
         <textarea onChange={onPostChange} ref={newPostElement} value={props.newPostText}/>
 
-        <button onClick={addPost}>КНОПКА</button>
+        <button onClick={onAddPost}>КНОПКА</button>
         <div>
             {postsElement}
         </div>

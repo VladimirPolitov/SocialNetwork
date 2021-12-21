@@ -5,6 +5,8 @@ import Navbar from "./components/navbar/navbar";
 import Profile from "./components/middle/profile/profile";
 import Dialogs from "./components/middle/dialogs/dialogs";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import ProfileContainer from "./components/middle/profile/profileContainer";
+import DialogsContainer from "./components/middle/dialogs/Message/DialogsContainer";
 
 function App(props: any) {
 
@@ -15,11 +17,9 @@ function App(props: any) {
                 <Navbar/>
                 <div className='onMiddle'>
                     <Routes>
-                        <Route path='/profile' element={<Profile myPostsData2={props.state.postPage.myPostsData}
-                                                                 newPostText={props.state.postPage.newPostText}
-                                                                 dispatch={props.dispatch}
+                        <Route path='/profile' element={<ProfileContainer store = {props.store}
                         />}/>
-                        <Route path='/dialogs' element={<Dialogs store={props.store}
+                        <Route path='/dialogs' element={<DialogsContainer store={props.store}
                         />}/>
                     </Routes>
                 </div>
