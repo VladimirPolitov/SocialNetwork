@@ -2,8 +2,6 @@ import React from 'react';
 import './App.css';
 import Header from "./components/header/header";
 import Navbar from "./components/navbar/navbar";
-import Profile from "./components/middle/profile/profile";
-import Dialogs from "./components/middle/dialogs/dialogs";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import ProfileContainer from "./components/middle/profile/profileContainer";
 import DialogsContainer from "./components/middle/dialogs/Message/DialogsContainer";
