@@ -42,7 +42,7 @@ let store = {
     dispatch(action: any) {
         this._state.postPage = profileReducer(this._state.postPage, action)
         this._state.messagePage = dialogsReducer(this._state.messagePage, action)
-        rerenderEntireTree(this._state)
+        rerenderEntireTree()
     }
 }
 

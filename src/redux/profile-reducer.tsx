@@ -16,17 +16,30 @@ let initialState = {
 
 let profileReducer = (state: { newPostText: string; myPostsData: { id: string; message: any; likesCount: number; }[]; } = initialState,
                       action: { type: string; newText: any; }) => {
-    if (action.type === 'ADD-POST') {
-        let newPost = {id: '6', message: state.newPostText, likesCount: 0};
-        state.myPostsData.push(newPost);
-        state.newPostText = '';
-        //rerenderEntireTree(this._state)
-    } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-        state.newPostText = action.newText;
-        //rerenderEntireTree(this._state)
+    switch (action.type) {
+        case ADD_POST: {
+            let newPost: any = {
+                id: 5,
+                message: state.newPostText,
+                likesCount: 0
+            }
+            return {
+                ...state,
+                myPostsData: [...state.myPostsData, newPost],
+                newPostText: ''
+            };
+        }
+        case UPDATE_NEW_POST_TEXT: {
+            return {
+                ...state,
+                newPostText: action.newText
+            };
+        }
+        default:
+            return state;
     }
-    return state;
 }
+
 
 export let addPostActionCreator = () => ({type: ADD_POST})
 export let updateNewPostTextActionCreator = (text: any) =>

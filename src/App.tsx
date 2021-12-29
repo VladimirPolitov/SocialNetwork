@@ -4,7 +4,7 @@ import Header from "./components/header/header";
 import Navbar from "./components/navbar/navbar";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import ProfileContainer from "./components/middle/profile/profileContainer";
-import DialogsContainer from "./components/middle/dialogs/Message/DialogsContainer";
+import {DialogsContainer} from "./components/middle/dialogs/Message/DialogsContainer";
 
 function App(props: any) {
 
