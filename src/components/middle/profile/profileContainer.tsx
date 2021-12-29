@@ -3,36 +3,45 @@ import p from "./profile.module.css";
 import Post from "./Posts/Post";
 import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
 import Profile from "./profile";
+import store from "../../../redux/store";
+import {connect} from "react-redux";
 
 
+// function ProfileContainer() {
+//
+//     return (
+//         <StoreContext.Consumer>
+//             {
+//             (store) => {
+//                 let state = store.getState()
+//                 let addPost = () => {
+//                     store.dispatch(addPostActionCreator())
+//                 }
+//                 let onPostChange = (text: any) => {
+//                     let action = updateNewPostTextActionCreator(text)
+//                     store.dispatch(action);
+//                 }
+//                 return <Profile
+//                     updateNewPostText={onPostChange}
+//                     addPost={addPost}
+//                     posts={state.postPage.myPostsData}
+//                     newPostText={state.postPage.newPostText}/>
+//             }}
+//         </StoreContext.Consumer>
+//     )
+// }
 
-function ProfileContainer(props: any) {
-
-    let state = props.store.getState()
-
-    // let newPostElement = React.createRef<HTMLTextAreaElement>();
-
-    let addPost = () => {
-            props.store.dispatch(addPostActionCreator())
-    }
-
-    let onPostChange = (text: any) => {
-        let action = updateNewPostTextActionCreator(text)
-        props.store.dispatch(action);
-    }
-
-    return (<Profile
-        updateNewPostText={onPostChange}
-        addPost={addPost}
-        posts={state.postPage.myPostsData}
-        newPostText={state.postPage.newPostText}
-
-    />)
+const mapStateToProps = (state: any) => {
+    return{posts: state.postPage.myPostsData, newPostText: state.postPage.newPostText}
 }
 
-//
-// myPostsData2={props.state.postPage.myPostsData}
-// newPostText={props.state.postPage.newPostText}
-// dispatch={props.dispatch}
+const mapDispatchToProps = (dispatch: any) => {
+    return{updateNewPostText: (text: any) => {let action = updateNewPostTextActionCreator(text)
+           dispatch(action);},
+        addPost: () => {store.dispatch(addPostActionCreator())}
+    }
+}
+
+const ProfileContainer = connect (mapStateToProps, mapDispatchToProps) (Profile);
 
 export default ProfileContainer;

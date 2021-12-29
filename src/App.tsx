@@ -15,10 +15,8 @@ function App(props: any) {
                 <Navbar/>
                 <div className='onMiddle'>
                     <Routes>
-                        <Route path='/profile' element={<ProfileContainer store = {props.store}
-                        />}/>
-                        <Route path='/dialogs' element={<DialogsContainer store={props.store}
-                        />}/>
+                        <Route path='/profile' element={<ProfileContainer />}/>
+                        <Route path='/dialogs' element={<DialogsContainer />}/>
                     </Routes>
                 </div>
 
