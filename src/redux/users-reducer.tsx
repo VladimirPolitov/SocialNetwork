@@ -17,7 +17,7 @@ let initialState: InitialStateType = {
     users: []
 };
 
-type InitialStateType = {
+export type InitialStateType = {
     users: Array<UserType>
 }
 

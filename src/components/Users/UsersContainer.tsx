@@ -1,17 +1,17 @@
 import React from "react";
 import Users from "./Users";
 import {connect} from "react-redux";
-import {followAC, setUsersAC, unfollowAC} from "../../redux/users-reducer";
+import {followAC, InitialStateType, setUsersAC, unfollowAC, UserType} from "../../redux/users-reducer";
 import {AppStateType} from "../../redux/redux-store";
 
 
 
 
 type MapStateToPropsType = {
-    users:
+    users: InitialStateType
 }
 
-let mapStateToProps = (state: AppStateType) => {
+let mapStateToProps = (state: AppStateType): { users: Array<UserType> } => {
     return {
         users: state.usersPage.users
     }

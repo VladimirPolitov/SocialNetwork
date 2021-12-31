@@ -14,7 +14,7 @@ let Users = (props: any) => {
                 location: {city: 'Minsk', country: 'Belarus'}
             },
             {
-                id: '1',
+                id: '2',
                 photoUrl: 'https://lh3.googleusercontent.com/proxy/V3mGvW4U3pP-_efqAzivBJYKDZyrlitD5Iu8GffUsww5TxocGvVxknkzwaF9h11BubfmTdlyyHy5KtRCIVypg_o5k0u-rDpdwCYrfb_QmrZ2EZsPGnEqtq1uPAH5eb0pq6_BTBCRxGPAYjaR',
                 followed: true,
                 fullName: "Sasha",
@@ -22,7 +22,7 @@ let Users = (props: any) => {
                 location: {city: 'Moscow', country: 'Russia'}
             },
             {
-                id: '1',
+                id: '3',
                 photoUrl: 'https://lh3.googleusercontent.com/proxy/V3mGvW4U3pP-_efqAzivBJYKDZyrlitD5Iu8GffUsww5TxocGvVxknkzwaF9h11BubfmTdlyyHy5KtRCIVypg_o5k0u-rDpdwCYrfb_QmrZ2EZsPGnEqtq1uPAH5eb0pq6_BTBCRxGPAYjaR',
                 followed: false,
                 fullName: "Andrew",
@@ -30,7 +30,6 @@ let Users = (props: any) => {
                 location: {city: 'Kiev', country: 'Ukraine'}
             },
         ],
-
     )}
 
     return <div>
