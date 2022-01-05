@@ -1,43 +1,22 @@
 import React from "react";
 import styles from './users.module.css';
+import axios from "axios";
 
 let Users = (props: any) => {
 
     if (props.users.length === 0) {
-    props.setUsers([
-            {
-                id: '1',
-                photoUrl: 'https://lh3.googleusercontent.com/proxy/V3mGvW4U3pP-_efqAzivBJYKDZyrlitD5Iu8GffUsww5TxocGvVxknkzwaF9h11BubfmTdlyyHy5KtRCIVypg_o5k0u-rDpdwCYrfb_QmrZ2EZsPGnEqtq1uPAH5eb0pq6_BTBCRxGPAYjaR',
-                followed: false,
-                fullName: "Dmitry",
-                status: "Iam a BOSS",
-                location: {city: 'Minsk', country: 'Belarus'}
-            },
-            {
-                id: '2',
-                photoUrl: 'https://lh3.googleusercontent.com/proxy/V3mGvW4U3pP-_efqAzivBJYKDZyrlitD5Iu8GffUsww5TxocGvVxknkzwaF9h11BubfmTdlyyHy5KtRCIVypg_o5k0u-rDpdwCYrfb_QmrZ2EZsPGnEqtq1uPAH5eb0pq6_BTBCRxGPAYjaR',
-                followed: true,
-                fullName: "Sasha",
-                status: "Iam a BOSS too",
-                location: {city: 'Moscow', country: 'Russia'}
-            },
-            {
-                id: '3',
-                photoUrl: 'https://lh3.googleusercontent.com/proxy/V3mGvW4U3pP-_efqAzivBJYKDZyrlitD5Iu8GffUsww5TxocGvVxknkzwaF9h11BubfmTdlyyHy5KtRCIVypg_o5k0u-rDpdwCYrfb_QmrZ2EZsPGnEqtq1uPAH5eb0pq6_BTBCRxGPAYjaR',
-                followed: false,
-                fullName: "Andrew",
-                status: "Iam a BOSS too",
-                location: {city: 'Kiev', country: 'Ukraine'}
-            },
-        ],
-    )}
+
+        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+            props.setUsers(response.data.items)
+        })
+    }
 
     return <div>
         {
             props.users.map((u: any) => <div key={u.id}>
                 <span>
                     <div>
-                        <img src={u.photoUrl} className={styles.userPhoto}/>
+                        <img src={u.photos.small !=null ? u.photos.small : ""} className={styles.userPhoto}/>
                     </div>
                     <div>
                         {u.followed
@@ -47,13 +26,13 @@ let Users = (props: any) => {
                 </span>
                 <span>
                     <span>
-                        <div>{u.fullName}</div>
+                        <div>{u.name}</div>
                         <div>{u.status}</div>
 
                     </span>
                     <span>
-                        <div>{u.location.country}</div>
-                        <div>{u.location.city}</div>
+                        <div>{"u.location.country"}</div>
+                        <div>{"u.location.city"}</div>
                     </span>
                 </span>
             </div>)
