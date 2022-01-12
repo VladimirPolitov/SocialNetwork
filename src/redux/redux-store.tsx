@@ -6,7 +6,7 @@ import userReducer from "./users-reducer";
 let rootReducer = combineReducers({
     postPage: profileReducer,
     messagePage: dialogsReducer,
-    usersPage: userReducer
+    usersPage: userReducer,
 })
 
 export type AppStateType = ReturnType<typeof rootReducer>
