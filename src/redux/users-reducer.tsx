@@ -19,7 +19,8 @@ let initialState: InitialStateType = {
     users: [],
     pageSize: 5,
     totalUsersCount: 0,
-    currentPage: 1
+    currentPage: 1,
+    isFetching: false
 
 };
 
@@ -27,7 +28,8 @@ export type InitialStateType = {
     users: Array<UserType>,
     pageSize: number,
     totalUsersCount: number,
-    currentPage: number
+    currentPage: number,
+    isFetching: boolean
 
 }
 
