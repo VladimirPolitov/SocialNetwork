@@ -2,6 +2,9 @@ import {rerenderEntireTree} from "../render";
 
 let ADD_POST = 'ADD-POST';
 let UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+let SET_USER_PROFILE = 'SET_USER_PROFILE';
+
+
 
 let initialState = {
     myPostsData: [
@@ -11,11 +14,12 @@ let initialState = {
         {id: '4', message: "Wake up, Neo", likesCount: 12},
         {id: '5', message: "Best work ever!", likesCount: 12}
     ],
-    newPostText: "it-kamasutra"
+    newPostText: "it-kamasutra",
+    profile: null
 }
 
 let profileReducer = (state: { newPostText: string; myPostsData: { id: string; message: any; likesCount: number; }[]; } = initialState,
-                      action: { type: string; newText: any; }) => {
+                      action: { type: string; newText: any; profile: any }) => {
     switch (action.type) {
         case ADD_POST: {
             let newPost: any = {
@@ -35,12 +39,15 @@ let profileReducer = (state: { newPostText: string; myPostsData: { id: string; m
                 newPostText: action.newText
             };
         }
+        case SET_USER_PROFILE: {
+            return {...state, profile: action.profile}
+        }
         default:
             return state;
     }
 }
 
-
+export let setUserProfile = (profile: any) => ({type: SET_USER_PROFILE, profile})
 export let addPostActionCreator = () => ({type: ADD_POST})
 export let updateNewPostTextActionCreator = (text: any) =>
     ({type: UPDATE_NEW_POST_TEXT, newText: text})
