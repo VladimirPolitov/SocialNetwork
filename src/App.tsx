@@ -1,18 +1,18 @@
 import React from 'react';
 import './App.css';
-import Header from "./components/header/header";
 import Navbar from "./components/navbar/navbar";
 import ProfileContainer from "./components/middle/profile/profileContainer";
 import {DialogsContainer} from "./components/middle/dialogs/Message/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import HeaderContainer from "./components/header/HeaderContainer";
 
 
 function App(props: any) {
     return (
         <BrowserRouter>
             <div className='wrapper'>
-                <Header value="HEADER"/>
+                <HeaderContainer value="HEADER"/>
                 <Navbar/>
                 <div className='onMiddle'>
                     <Routes>

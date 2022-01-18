@@ -2,3 +2,8 @@
     grid-area: h;
     background-color: coral;
 }
+
+.loginBlock {
+    float: right;
+}
+

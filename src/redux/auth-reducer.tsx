@@ -31,7 +31,7 @@ let authReducer = (state = initialState, action: {
 }
 
 
-export let setUserData = (userId: any, email: any, login: any) => ({type: SET_USER_DATA, data:{userId, email, login}})
+export let setAuthUserData = (userId: any, email: any, login: any) => ({type: SET_USER_DATA, data:{userId, email, login}})
 
 export default authReducer
 
