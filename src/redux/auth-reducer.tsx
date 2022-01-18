@@ -5,13 +5,14 @@ let initialState: InitialStateType = {
     userId: null,
     email: null,
     login: null,
-
+    isAuth: false
 };
 
 export type InitialStateType = {
     userId: any,
     email: any,
-    login: any
+    login: any,
+    isAuth: boolean
 }
 
 let authReducer = (state = initialState, action: {
@@ -22,7 +23,8 @@ let authReducer = (state = initialState, action: {
         case SET_USER_DATA:
             return {
                 ...state,
-                ...action.data
+                ...action.data,
+                isAuth: true
             }
 
         default:

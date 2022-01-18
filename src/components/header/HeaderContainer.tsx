@@ -12,8 +12,8 @@ class HeaderContainer extends React.Component<any, any> {
             withCredentials: true
         }).then(response => {
             if (response.data.resultCode === 0) {
-                let {userId, email, login} = response.data.data;
-                this.props.setAuthUserData(userId, email, login)
+                let {id, email, login} = response.data.data;
+                this.props.setAuthUserData(id, email, login)
             }
         })
     }
@@ -23,6 +23,9 @@ class HeaderContainer extends React.Component<any, any> {
     }
 }
 
-const mapStateToProps = (state: any) => ({})
+const mapStateToProps = (state: any) => ({
+    isAuth: state.auth.isAuth,
+    login: state.auth.login
+})
 
 export default connect(mapStateToProps, {setAuthUserData}) (HeaderContainer);
