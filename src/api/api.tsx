@@ -1,5 +1,27 @@
 import axios from "axios";
 
-export const getUsers =(currentPage: any, pageSize: any)=> {
-return axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`,
-    {withCredentials: true})}
+
+
+const instance = axios.create({
+    withCredentials: true,
+    baseURL: 'https://social-network.samuraijs.com/api/1.0/',
+    headers: {
+        "API-KEY": "1c7aff3f-44b4-44a4-a184-ea2b390c2fc6"
+    }
+})
+
+
+export const usersAPI = {
+    getUsers (currentPage: any, pageSize: any) {
+        return instance.get(`users?page=${currentPage}&count=${pageSize}`)
+            .then(response => response.data);
+    },
+    followUnfollow (currentPage: any, pageSize: any) {
+        return instance.get(`follow?page=${currentPage}&count=${pageSize}`)
+            .then(response => response.data);
+}}
+
+
+
+
+
