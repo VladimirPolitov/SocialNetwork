@@ -1,9 +1,13 @@
 import React from "react";
-import h from'./header.module.css'
+import h from './header.module.css'
 
 
 function Header(props: any) {
-    return  <div className={h.nav}>{props.value}</div>
+    return
+    <header>
+        <div className={h.nav}>{props.value}</div>
+        <div className={h.loginBlock}></div>
+    </header>
 }
 
 export default Header;
