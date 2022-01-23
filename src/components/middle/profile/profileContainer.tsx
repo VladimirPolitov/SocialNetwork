@@ -1,9 +1,13 @@
 import React from "react";
-import {addPostActionCreator, setUserProfile, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
+import {
+    addPostActionCreator,
+    getUserProfile,
+    updateNewPostTextActionCreator
+} from "../../../redux/profile-reducer";
 import Profile from "./profile";
 import {connect} from "react-redux";
-import axios from "axios";
 import {useParams} from "react-router-dom";
+
 
 
 
@@ -14,9 +18,7 @@ class ProfileContainer extends React.Component<any, any>{
         if (!userId) {
             userId = 2;
         }
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/`+userId).then(response => {
-            this.props.setUserProfile(response.data);
-        })
+        this.props.getUserProfile(userId)
     }
 
     render() {
@@ -48,5 +50,5 @@ export const withRouter = (WrappedComponent: typeof React.Component) => {
 const ProfileContainerURL = withRouter(ProfileContainer)
 
 
-export default connect(mapStateToProps, {setUserProfile, addPostActionCreator, updateNewPostTextActionCreator})(ProfileContainerURL);
+export default connect(mapStateToProps, {getUserProfile, addPostActionCreator, updateNewPostTextActionCreator})(ProfileContainerURL);
 

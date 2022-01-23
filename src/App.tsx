@@ -19,6 +19,7 @@ function App(props: any) {
                         <Route path='/profile' element={<ProfileContainer />}/>
                         <Route path='/dialogs' element={<DialogsContainer />}/>
                         <Route path='/users' element={<UsersContainer/>}/>
+                        <Route path='/login' element={<UsersContainer/>}/>
                     </Routes>
                 </div>
 

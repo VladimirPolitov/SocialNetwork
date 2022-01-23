@@ -1,3 +1,4 @@
+import { usersAPI } from "../api/api";
 import {rerenderEntireTree} from "../render";
 
 let ADD_POST = 'ADD-POST';
@@ -51,6 +52,12 @@ export let setUserProfile = (profile: any) => ({type: SET_USER_PROFILE, profile}
 export let addPostActionCreator = () => ({type: ADD_POST})
 export let updateNewPostTextActionCreator = (text: any) =>
     ({type: UPDATE_NEW_POST_TEXT, newText: text})
+
+export let getUserProfile = (userId: any) => (dispatch: any) => {
+    usersAPI.getProfile(userId).then(response => {
+        dispatch(setUserProfile(response.data));
+    })
+}
 
 export default profileReducer
 
