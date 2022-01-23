@@ -6,7 +6,7 @@ import {
 } from "../../../redux/profile-reducer";
 import Profile from "./profile";
 import {connect} from "react-redux";
-import {useParams} from "react-router-dom";
+import {Navigate, useParams} from "react-router-dom";
 
 
 
@@ -22,6 +22,7 @@ class ProfileContainer extends React.Component<any, any>{
     }
 
     render() {
+        if (this.props.isAuth == false) return (<Navigate to={"/login"} />);
             return (
                 <div>
                     <Profile {...this.props} profile={this.props.profile}/>
@@ -35,7 +36,8 @@ const mapStateToProps = (state: any) => {
     return {
         profile: state.postPage.profile,
         posts: state.postPage.myPostsData,
-        newPostText: state.postPage.newPostText
+        newPostText: state.postPage.newPostText,
+        isAuth: state.auth.isAuth
     }
 }
 

@@ -5,19 +5,23 @@ import {connect} from "react-redux";
 import {AppStateType} from "../../../../redux/redux-store";
 
 
-
-
-
 let mapStateToProps = (state: AppStateType) => {
-    return{messagePage: state.messagePage}
-}
-
-let mapDispatchToProps = (dispatch: any) => {
-    return{
-        sendMessage: ()=>{dispatch(sendMessageCreator())},
-        updateNewMessageBody: (body: any)=>{dispatch(updateNewMessageBodyCreator(body))}
+    return {
+        messagePage: state.messagePage,
+        isAuth: state.auth.isAuth
     }
 }
 
-export const DialogsContainer = connect(mapStateToProps,mapDispatchToProps)(Dialogs)
+let mapDispatchToProps = (dispatch: any) => {
+    return {
+        sendMessage: () => {
+            dispatch(sendMessageCreator())
+        },
+        updateNewMessageBody: (body: any) => {
+            dispatch(updateNewMessageBodyCreator(body))
+        }
+    }
+}
+
+export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
 

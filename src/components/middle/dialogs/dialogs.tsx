@@ -2,7 +2,7 @@ import React, {ChangeEvent} from "react";
 import d from "./dialogs.module.css"
 import Message from "./Message/Message";
 import Dialog from "./Dialog/dialog";
-
+import {Navigate} from "react-router-dom";
 
 
 function Dialogs(props: any) {
@@ -21,6 +21,9 @@ function Dialogs(props: any) {
         let body = e.currentTarget.value;
         props.updateNewMessageBody(body)
     };
+
+
+    if (props.isAuth == false) return (<Navigate to={"/login"} />);
 
     return (<div className={d.grandDialogs}>
             <div className={d.dialogs}>
