@@ -8,4 +8,5 @@ export const WithAuthRedirect = (Component: any) => {
             return <Component {...this.props}/>
         }
     }
+    return RedirectComponent
 }
