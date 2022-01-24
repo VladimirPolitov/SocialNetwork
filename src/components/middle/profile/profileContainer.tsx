@@ -22,7 +22,7 @@ class ProfileContainer extends React.Component<any, any>{
     }
 
     render() {
-        if (this.props.isAuth == false) return (<Navigate to={"/login"} />);
+
             return (
                 <div>
                     <Profile {...this.props} profile={this.props.profile}/>
@@ -31,6 +31,11 @@ class ProfileContainer extends React.Component<any, any>{
         }
 }
 
+
+let AuthRedirectComponent = (props: any) => {
+    if (!props.isAuth) return <Navigate to={"/login"} />;
+    return <ProfileContainer {...props}/>
+}
 
 const mapStateToProps = (state: any) => {
     return {
@@ -41,7 +46,7 @@ const mapStateToProps = (state: any) => {
     }
 }
 
-export const withRouter = (WrappedComponent: typeof React.Component) => {
+export const withRouter = (WrappedComponent: (props: any) => (JSX.Element)) => {
     return (props: object) => {
         const params = useParams();
         return (
@@ -49,7 +54,7 @@ export const withRouter = (WrappedComponent: typeof React.Component) => {
         )
     }
 }
-const ProfileContainerURL = withRouter(ProfileContainer)
+const ProfileContainerURL = withRouter(AuthRedirectComponent)
 
 
 export default connect(mapStateToProps, {getUserProfile, addPostActionCreator, updateNewPostTextActionCreator})(ProfileContainerURL);
