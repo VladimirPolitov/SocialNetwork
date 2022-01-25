@@ -1,6 +1,3 @@
-import {rerenderEntireTree} from "../render";
-
-let UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY';
 let SEND_MESSAGE = 'SEND_MESSAGE';
 
 let initialState = {
@@ -17,23 +14,16 @@ let initialState = {
         {id: '3', nick: 'Tanya'},
         {id: '4', nick: 'Goro'},
         {id: '5', nick: 'Scorpion'}
-    ],
-    newMessageBody: "",
+    ]
 }
 
 let dialogsReducer = (state: any = initialState, action: any) => {
 
     switch (action.type) {
-        case UPDATE_NEW_MESSAGE_BODY:
-            return {
-                ...state,
-                newMessageBody: action.body
-            }
         case SEND_MESSAGE:
-            let body = state.newMessageBody;
+            let body = action.newMessageBody;
             return {
                 ...state,
-                ewMessageBody: '',
                 messages: [...state.messages, {id: 6, message: body}]
             }
         default:
@@ -42,9 +32,8 @@ let dialogsReducer = (state: any = initialState, action: any) => {
 }
 
 
-export let sendMessageCreator = () => ({type: SEND_MESSAGE})
-export let updateNewMessageBodyCreator = (body: any) =>
-    ({type: UPDATE_NEW_MESSAGE_BODY, body: body})
+export let sendMessageCreator = (newMessageBody: any) => ({type: SEND_MESSAGE, newMessageBody})
+
 
 export default dialogsReducer
 
