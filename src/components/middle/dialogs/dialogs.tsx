@@ -18,12 +18,6 @@ function Dialogs(props: any) {
         props.sendMessage();
     };
 
-
-    let onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        let body = e.currentTarget.value;
-        props.updateNewMessageBody(body)
-    };
-
     let addNewMessage = (values: any) => {
         props.sendMessage(values.newMessageBody);
     };
