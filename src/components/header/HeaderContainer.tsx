@@ -8,9 +8,6 @@ import {authAPI} from "../../api/api";
 
 class HeaderContainer extends React.Component<any, any> {
 
-    componentDidMount() {
-        this.props.getAuthUserData()
-    }
 
     render() {
         return <Header {...this.props}/>
@@ -22,4 +19,4 @@ const mapStateToProps = (state: any) => ({
     login: state.auth.login
 })
 
-export default connect(mapStateToProps, {getAuthUserData, logout}) (HeaderContainer);
+export default connect(mapStateToProps, {logout}) (HeaderContainer);

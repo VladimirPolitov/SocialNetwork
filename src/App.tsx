@@ -7,26 +7,35 @@ import UsersContainer from "./components/Users/UsersContainer";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import HeaderContainer from "./components/header/HeaderContainer";
 import LoginPage from "./components/login/Login";
+import {connect} from "react-redux";
+import {getAuthUserData, logout} from "./redux/auth-reducer";
 
 
-function App(props: any) {
-    return (
-        <BrowserRouter>
-            <div className='wrapper'>
-                <HeaderContainer value="HEADER"/>
-                <Navbar/>
-                <div className='onMiddle'>
-                    <Routes>
-                        <Route path='/profile' element={<ProfileContainer />}/>
-                        <Route path='/dialogs' element={<DialogsContainer />}/>
-                        <Route path='/users' element={<UsersContainer/>}/>
-                        <Route path='/login' element={<LoginPage/>}/>
-                    </Routes>
+class App extends React.Component<any> {
+
+    componentDidMount() {
+        this.props.getAuthUserData()
+    }
+
+    render() {
+        return (
+            <BrowserRouter>
+                <div className='wrapper'>
+                    <HeaderContainer value="HEADER"/>
+                    <Navbar/>
+                    <div className='onMiddle'>
+                        <Routes>
+                            <Route path='/profile' element={<ProfileContainer/>}/>
+                            <Route path='/dialogs' element={<DialogsContainer/>}/>
+                            <Route path='/users' element={<UsersContainer/>}/>
+                            <Route path='/login' element={<LoginPage/>}/>
+                        </Routes>
+                    </div>
+
                 </div>
-
-            </div>
-        </BrowserRouter>
-    )
+            </BrowserRouter>
+        )
+    }
 }
 
-export default App;
+export default connect(null, {getAuthUserData}) (App);
