@@ -1,6 +1,4 @@
 import React from "react";
-import p from "./profile.module.css";
-
 
 class ProfileStatus extends React.Component<any, any> {
 
