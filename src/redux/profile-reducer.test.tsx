@@ -1,11 +1,4 @@
-import {profileAPI, usersAPI} from "../api/api";
-import {rerenderEntireTree} from "../render";
-
-let ADD_POST = 'ADD-POST';
-let UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-let SET_USER_PROFILE = 'SET_USER_PROFILE';
-let SET_STATUS = 'SET_STATUS';
-
+import profileReducer, {addPostActionCreator, deletePost} from "./profile-reducer";
 
 let initialState = {
     myPostsData: [
@@ -18,69 +11,18 @@ let initialState = {
     newPostText: "it-kamasutra",
     profile: null,
     status: ""
-}
+};
 
-let profileReducer = (state: { newPostText: string; myPostsData: { id: string; message: any; likesCount: number; }[]; } = initialState,
-                      action: {
-                          status: string | any;
-                          type: string; newText: any; profile: any
-                      }) => {
-    switch (action.type) {
-        case ADD_POST: {
-            let newPost: any = {
-                id: 5,
-                message: state.newPostText,
-                likesCount: 0
-            }
-            return {
-                ...state,
-                myPostsData: [...state.myPostsData, newPost],
-                newPostText: ''
-            };
-        }
-        case UPDATE_NEW_POST_TEXT: {
-            return {
-                ...state,
-                newPostText: action.newText
-            };
-        }
-        case SET_USER_PROFILE: {
-            return {...state, profile: action.profile}
-        }
-        case SET_STATUS: {
-            return {
-                ...state,
-                status: action.status
-            };
-        }
-        default:
-            return state;
-    }
-}
 
-export let setUserProfile = (profile: any) => ({type: SET_USER_PROFILE, profile})
-export let addPostActionCreator = () => ({type: ADD_POST})
-export let updateNewPostTextActionCreator = (text: any) =>
-    ({type: UPDATE_NEW_POST_TEXT, newText: text})
-export let setStatus = (status: any) => ({type: SET_STATUS, status})
+it('new post should be added', () => {
+    let action = addPostActionCreator();
+    let newState = profileReducer(initialState, action);
+    expect(newState.myPostsData.length).toBe( 6);
+    expect(newState.myPostsData[3].message).toBe( "Wake up, Neo");
+})
 
-export let getUserProfile = (userId: any) => (dispatch: any) => {
-    usersAPI.getProfile(userId).then(response => {
-        dispatch(setUserProfile(response.data));
-    })
-}
-export let getStatus = (userId: any) => (dispatch: any) => {
-    profileAPI.getStatus(userId).then(response => {
-        dispatch(setStatus(response.data));
-    })
-}
-export let updateStatus = (status: any) => (dispatch: any) => {
-    profileAPI.updateStatus(status).then(response => {
-        if (response.data.resultCode === 0) {
-            dispatch(setStatus(status));
-        }
-    })
-}
-
-export default profileReducer
+it('name test', () => {
+    let action = deletePost(1);
+    expect(newstate.posts.length).toBe(3)
+})
 

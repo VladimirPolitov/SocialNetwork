@@ -5,7 +5,7 @@ let ADD_POST = 'ADD-POST';
 let UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 let SET_USER_PROFILE = 'SET_USER_PROFILE';
 let SET_STATUS = 'SET_STATUS';
-
+let DELETE_POST = 'DELETE_POST'
 
 let initialState = {
     myPostsData: [
@@ -63,6 +63,7 @@ export let addPostActionCreator = () => ({type: ADD_POST})
 export let updateNewPostTextActionCreator = (text: any) =>
     ({type: UPDATE_NEW_POST_TEXT, newText: text})
 export let setStatus = (status: any) => ({type: SET_STATUS, status})
+export const deletePost = (postId: any) => ({type: DELETE_POST, postId})
 
 export let getUserProfile = (userId: any) => (dispatch: any) => {
     usersAPI.getProfile(userId).then(response => {
