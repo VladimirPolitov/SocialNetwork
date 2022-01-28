@@ -13,16 +13,12 @@ let initialState = {
     status: ""
 };
 
+//
+// it('new post should be added', () => {
+//     let action = addPostActionCreator();
+//     let newState = profileReducer(initialState, action);
+//     expect(newState.myPostsData.length).toBe( 6);
+//     expect(newState.myPostsData[3].message).toBe( "Wake up, Neo");
+// })
 
-it('new post should be added', () => {
-    let action = addPostActionCreator();
-    let newState = profileReducer(initialState, action);
-    expect(newState.myPostsData.length).toBe( 6);
-    expect(newState.myPostsData[3].message).toBe( "Wake up, Neo");
-})
-
-it('name test', () => {
-    let action = deletePost(1);
-    expect(newstate.posts.length).toBe(3)
-})
 
