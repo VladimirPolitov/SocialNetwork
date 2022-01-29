@@ -8,7 +8,8 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import HeaderContainer from "./components/header/HeaderContainer";
 import LoginPage from "./components/login/Login";
 import {connect} from "react-redux";
-import {getAuthUserData, logout} from "./redux/auth-reducer";
+import {getAuthUserData} from "./redux/auth-reducer";
+
 
 
 class App extends React.Component<any> {
